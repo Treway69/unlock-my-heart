@@ -1,903 +1,414 @@
 
-
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="theme-color" content="#100d0b">
-
-<title>Izzy & Tre ♡</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unlock My Heart ♡ — Izzy & Tre</title>
 
 <style>
-
-:root{
-
-  --bg:#100d0b;--panel:#1a1512;
-
-  --gold:#c6a369;--lightgold:#edcf92;
-
-  --cream:#f5ecdf;--muted:#bcae9a;
-
-}
-
 *{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
-
-body{margin:0;background:var(--bg);color:var(--cream);
-
-  font-family:"DM Sans",sans-serif}
-
-body:before{content:"";position:fixed;inset:0;pointer-events:none;
-
-  opacity:.13;z-index:10;
-
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E")}
-
-a{color:inherit;text-decoration:none}
-
-button{font:inherit}
-
-header{height:78px;display:flex;align-items:center;justify-content:space-between;
-
-  padding:0 clamp(20px,5vw,65px);border-bottom:1px solid #65503755;
-
-  background:#100d0bed;position:sticky;top:0;z-index:20;
-
-  backdrop-filter:blur(15px)}
-
-.brand{font:30px "Cormorant Garamond",serif;color:var(--lightgold)}
-
-.brand span{font-size:23px}
-
-nav{display:flex;gap:30px}
-
-nav a{font-size:11px;text-transform:uppercase;letter-spacing:2px;
-
-  color:var(--muted);transition:.2s}
-
-nav a:hover,nav a.active{color:var(--lightgold)}
-
-.menu{display:none;background:none;border:1px solid #8a704e;
-
-  color:var(--lightgold);padding:8px 13px;font-size:20px;border-radius:50%}
-
-.view{display:none;animation:fade .45s ease}
-
-.view.active{display:block}
-
-@keyframes fade{from{opacity:0;transform:translateY(10px)}
-
-to{opacity:1;transform:translateY(0)}}
-
-.container{max-width:1120px;margin:auto;padding:0 22px}
-
-.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
-
-h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:400;margin:0}
-
-h1{font-size:clamp(68px,10vw,130px);line-height:.94;letter-spacing:-3px}
-
-h2{font-size:clamp(48px,7vw,82px);line-height:1.02}
-
-p{line-height:1.8;color:var(--muted)}
-
-.script{font-family:"Great Vibes",cursive;color:var(--lightgold);
-
-  font-weight:400}
-
-.gold{color:var(--gold)}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:16px;
-
-  padding:16px 25px;border-radius:30px;border:1px solid var(--gold);
-
-  background:transparent;color:var(--lightgold);
-
-  text-transform:uppercase;letter-spacing:2px;font-size:11px;
-
-  cursor:pointer;transition:.25s}
-
-.btn:hover{background:var(--gold);color:#18120a}
-
-.btn.solid{background:linear-gradient(120deg,#ddbf82,#a47c40);
-
-  color:#17100a;border-color:#e5c58d}
-
-.btn.solid:hover{filter:brightness(1.14)}
-
-.hero{position:relative;isolation:isolate;min-height:680px;
-
-  display:flex;align-items:center;overflow:hidden}
-
-.hero:before{content:"";position:absolute;inset:0;z-index:-2;
-
-  background:
-
-  radial-gradient(circle at 82% 35%,#b7763260 0%,transparent 25%),
-
-  radial-gradient(circle at 68% 75%,#62402570 0%,transparent 27%),
-
-  linear-gradient(110deg,#100d0b 8%,#1b1311 48%,#100d0b 100%)}
-
-.hero:after{content:"";position:absolute;inset:0;z-index:-1;
-
-  background:linear-gradient(90deg,#100d0be9 0%,#100d0b97 65%,#100d0b29)}
-
-.hero-photo{position:absolute;right:0;top:0;width:65%;height:100%;
-
-  object-fit:cover;opacity:.7;z-index:-2;display:none}
-
-.hero-inner{width:100%;padding:100px 0}
-
-.hero h1{margin:35px 0 20px}
-
-.hero .tagline{font:clamp(26px,4vw,45px) "Cormorant Garamond",serif;
-
-  color:var(--cream);line-height:1.15;margin:0}
-
-.hero .tagline .script{font-size:1.35em}
-
-.hero .description{max-width:440px;margin:28px 0 30px}
-
-.ornament{font:35px "Cormorant Garamond",serif;color:var(--gold);
-
-  letter-spacing:12px}
-
-.nav-cards{display:grid;grid-template-columns:repeat(4,1fr);
-
-  gap:17px;margin:-60px auto 90px;position:relative;z-index:2}
-
-.nav-card{background:linear-gradient(145deg,#2a211bbd,#14100ef5);
-
-  border:1px solid #8c6b4080;border-radius:12px;
-
-  min-height:180px;padding:24px;display:flex;flex-direction:column;
-
-  justify-content:flex-end;gap:15px;transition:.25s;
-
-  box-shadow:0 20px 35px #0008}
-
-.nav-card:hover{transform:translateY(-6px);border-color:var(--lightgold)}
-
-.nav-card .sym{font-size:28px;color:var(--lightgold)}
-
-.nav-card strong{font:29px "Cormorant Garamond",serif;font-weight:400}
-
-.section{padding:85px 0}
-
-.section-head{text-align:center;margin-bottom:45px}
-
-.section-head h2{margin:13px 0}
-
-.divider{margin:18px auto;color:var(--gold);text-align:center;
-
-  font-size:21px;letter-spacing:18px}
-
-.memory{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-
-.polaroid{padding:13px 13px 34px;background:#e9ddc7;
-
-  box-shadow:0 22px 60px #000a;transform:rotate(-3deg)}
-
-.picture-slot{background:radial-gradient(circle at 60% 30%,#86613e,#2a201d 58%,#17120f);
-
-  width:100%;aspect-ratio:4/5;display:flex;align-items:center;
-
-  justify-content:center;text-align:center;padding:25px;
-
-  color:#e8d5ad;font:27px "Cormorant Garamond",serif}
-
-.picture-slot img{width:100%;height:100%;object-fit:cover;display:block}
-
-.letter-section{background:linear-gradient(145deg,#201710,#100d0b);
-
-  padding:90px 0;border-top:1px solid #8c6b4040}
-
-.letter-paper{max-width:760px;margin:35px auto 0;background:#e9ddc4;
-
-  color:#382719;padding:clamp(30px,6vw,65px);
-
-  box-shadow:0 20px 80px #0009;transform:rotate(-.5deg)}
-
-.letter-paper h3{font-size:48px;color:#71522a}
-
-.letter-paper p{color:#5f4a35;font:23px/1.7 "Cormorant Garamond",serif}
-
-.letter-paper .script{font-size:42px;color:#82612f}
-
-.page-intro{text-align:center;padding:85px 0 50px;
-
-  background:radial-gradient(ellipse at 50% 0,#55371b55,transparent 65%)}
-
-.page-intro h1{font-size:clamp(58px,9vw,100px);margin:20px 0}
-
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-
-  gap:14px;padding-bottom:80px}
-
-.photo-item{position:relative;aspect-ratio:3/4;border:1px solid #6e543a;
-
-  border-radius:8px;overflow:hidden;background:linear-gradient(140deg,#3b2a1f,#17110e);
-
-  cursor:pointer;box-shadow:0 12px 24px #0006;transition:.25s}
-
-.photo-item:hover{transform:translateY(-4px);border-color:var(--lightgold)}
-
-.photo-item img{width:100%;height:100%;object-fit:cover;display:block}
-
-.photo-placeholder{height:100%;display:flex;align-items:center;
-
-  justify-content:center;flex-direction:column;gap:9px;
-
-  background:radial-gradient(circle at 70% 20%,#76502b65,transparent 45%);
-
-  color:var(--gold)}
-
-.photo-placeholder .heart{font:42px "Cormorant Garamond",serif}
-
-.photo-placeholder small{font-size:10px;letter-spacing:1px}
-
-.photo-item .zoom{position:absolute;right:9px;bottom:9px;
-
-  background:#100d0bc9;color:var(--lightgold);padding:7px 9px;
-
-  border-radius:20px;font-size:12px}
-
-#lightbox{display:none;position:fixed;inset:0;background:#070605f2;
-
-  z-index:50;align-items:center;justify-content:center;flex-direction:column;
-
-  padding:28px}
-
-#lightbox.open{display:flex}
-
-#lightbox img{max-width:100%;max-height:82vh;object-fit:contain;
-
-  border:1px solid #8b6946;box-shadow:0 20px 80px #000}
-
-#lightbox button{position:absolute;right:20px;top:20px;
-
-  background:#201710;color:white;border:1px solid #ad8751;
-
-  border-radius:50%;width:44px;height:44px;font-size:25px;cursor:pointer}
-
-#lightbox figcaption{color:var(--lightgold);margin-top:15px}
-
-.video-grid{display:grid;grid-template-columns:repeat(2,1fr);
-
-  gap:22px;padding-bottom:90px}
-
-.video-card{border:1px solid #6c5238;border-radius:10px;
-
-  overflow:hidden;background:var(--panel)}
-
-.video-card video{width:100%;display:block;background:#000;
-
-  aspect-ratio:16/9;object-fit:contain}
-
-.video-empty{aspect-ratio:16/9;display:flex;align-items:center;
-
-  justify-content:center;flex-direction:column;
-
-  background:linear-gradient(140deg,#312117,#13100e);
-
-  color:var(--gold);gap:12px}
-
-.video-empty .play{font-size:50px}
-
-.video-card h3{font-size:30px;padding:20px}
-
-.contact-box{max-width:700px;margin:0 auto 100px;
-
-  border:1px solid #795e3a;background:linear-gradient(135deg,#241a14,#13100e);
-
-  padding:clamp(24px,6vw,65px);border-radius:14px;text-align:center}
-
-.contact-box textarea{width:100%;min-height:170px;resize:vertical;
-
-  background:#110d0a;border:1px solid #80613d;border-radius:8px;
-
-  padding:17px;color:white;font:16px "DM Sans",sans-serif;margin:15px 0 20px}
-
-footer{border-top:1px solid #765b394e;padding:35px 20px;
-
-  text-align:center;color:var(--gold);font:23px "Cormorant Garamond",serif}
-
-.small-note{font-size:12px;color:var(--muted);margin:15px 0}
-
-@media(max-width:700px){
-
- header{height:70px}
-
- .brand{font-size:27px}
-
- .menu{display:block}
-
- nav{display:none;position:absolute;top:70px;left:0;right:0;
-
-  padding:20px;background:#17110f;flex-direction:column;
-
-  gap:0;border-bottom:1px solid #765937}
-
- nav.open{display:flex}
-
- nav a{padding:14px 9px}
-
- .hero{min-height:650px}
-
- .hero-inner{padding:80px 0 120px}
-
- .hero h1{font-size:clamp(67px,12vw,93px)}
-
- .hero-photo{width:100%;opacity:.5}
-
- .nav-cards{grid-template-columns:repeat(2,1fr);gap:12px;margin-top:-70px}
-
- .nav-card{min-height:133px;padding:17px}
-
- .nav-card strong{font-size:25px}
-
- .memory{grid-template-columns:1fr;gap:45px}
-
- .memory .polaroid{max-width:360px;margin:0 auto}
-
- .gallery{gap:9px}
-
- .photo-item{border-radius:5px}
-
- .photo-placeholder .heart{font-size:28px}
-
- .photo-placeholder small{font-size:8px}
-
- .video-grid{grid-template-columns:1fr}
-
- .section{padding:65px 0}
-
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(ellipse at top,#42243b,#19121e 65%,#0b0911);
+  color:#ffeff6;
+  font-family:system-ui,sans-serif;
+  display:grid;
+  place-items:center;
+  padding:20px;
 }
 
-@media(max-width:360px){
-
- .gallery{grid-template-columns:repeat(2,1fr)}
-
+main{
+  max-width:480px;
+  width:100%;
+  text-align:center;
 }
 
+h1,h2{
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+
+h1{
+  font-size:34px;
+  margin:12px 0;
+}
+
+h2{font-size:27px}
+
+.pink{color:#f6b8d5}
+
+.muted{
+  color:#dfc5d4;
+  line-height:1.65;
+}
+
+.small{
+  font-size:12px;
+  color:#f6b8d5;
+  letter-spacing:1.4px;
+  font-weight:700;
+}
+
+.card{
+  background:#ffffff0b;
+  border:1px solid #ffffff2c;
+  border-radius:20px;
+  padding:25px 19px;
+  margin:22px 0;
+}
+
+.puzzle{
+  font-size:clamp(23px,6vw,35px);
+  font-weight:750;
+  background:#ffffff0b;
+  padding:23px 8px;
+  border-radius:12px;
+  margin:18px 0;
+}
+
+.hint{
+  color:#f4bbd6;
+  font-size:14px;
+  line-height:1.6;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  background:#110e19;
+  border:1px solid #a57e99;
+  border-radius:12px;
+  color:white;
+  text-align:center;
+  font-size:18px;
+  margin:15px 0 8px;
+}
+
+button,.btn{
+  display:block;
+  width:100%;
+  border:0;
+  border-radius:50px;
+  padding:15px;
+  background:#f3b5d3;
+  color:#281522;
+  font-size:15px;
+  font-weight:750;
+  text-decoration:none;
+  margin-top:18px;
+  cursor:pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible{
+  outline:3px solid white;
+  outline-offset:3px;
+}
+
+.error{
+  color:#ffbccf;
+  font-size:13px;
+  min-height:20px;
+}
+
+.heart{
+  font-size:85px;
+  color:#ffaacc;
+  display:inline-block;
+  animation:pop 1.5s ease both;
+  filter:drop-shadow(0 0 18px #ed76ab8a);
+}
+
+@keyframes pop{
+  0%{
+    transform:scale(.02);
+    opacity:0;
+  }
+  45%{
+    transform:scale(1.4);
+    opacity:1;
+  }
+  75%{
+    transform:scale(.85);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+footer{
+  color:#b99eae;
+  font-size:11px;
+  margin-top:20px;
+}
 </style>
-
 </head>
 
 <body>
-
-<header>
-
- <a class="brand" href="#home">Izzy & Tre <span>♡</span></a>
-
- <button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
-
- <nav id="nav">
-
-  <a href="#home">Home</a>
-
-  <a href="#photos">Photos</a>
-
-  <a href="#videos">Videos</a>
-
-  <a href="#contact">Contact Me</a>
-
- </nav>
-
-</header>
-
 <main>
 
-<!-- HOME -->
-
-<section class="view active" id="home">
-
- <div class="hero">
-
-  <!-- Add a wide image named hero.jpg to display it here -->
-
-  <img class="hero-photo" src="hero.jpg" alt="Our special moment"
-
-    onload="this.style.display='block'">
-
-  <div class="container hero-inner">
-
-   <div class="eyebrow">— For Isabella, with love</div>
-
-   <h1>Izzy & Tre <span class="gold">♡</span></h1>
-
-   <div class="tagline">
-
-    A little corner of the world,<br>
-
-    <span class="script">just for us.</span>
-
-   </div>
-
-   <p class="description">For the moments worth keeping, and the words worth saying. This little space is for you, Isabella.</p>
-
-   <a class="btn solid" href="#photos">Explore Our Story &nbsp; ↗</a>
-
-   <p class="ornament">♡</p>
-
+  <div class="small">
+    TOP SECRET • GIRLFRIEND ACCESS ONLY
   </div>
 
- </div>
+  <h1>
+    Unlock My Heart <span class="pink">♡</span>
+  </h1>
 
- <div class="container">
-
-  <div class="nav-cards">
-
-   <a class="nav-card" href="#home"><span class="sym">⌂</span><strong>Home ↗</strong></a>
-
-   <a class="nav-card" href="#photos"><span class="sym">▧</span><strong>Photos ↗</strong></a>
-
-   <a class="nav-card" href="#videos"><span class="sym">▷</span><strong>Videos ↗</strong></a>
-
-   <a class="nav-card" href="#contact"><span class="sym">♡</span><strong>Contact ↗</strong></a>
-
+  <div class="muted" style="font-size:13px">
+    The Certified Smart Girlfriend Edition™
   </div>
 
-  <div class="section memory">
-
-   <div>
-
-    <div class="eyebrow">Our Story</div>
-
-    <h2>More Than<br><span class="script">Just Moments ♡</span></h2>
-
-    <p>A collection of places, memories, and little things that make our story special.</p>
-
-    <a href="#photos" class="btn">See Our Journey ↗</a>
-
-   </div>
-
-   <div class="polaroid">
-
-    <div class="picture-slot">
-
-      <img src="featured.jpg" alt="A favorite memory"
-
-       onerror="this.style.display='none';this.parentElement.append('Your favorite photo goes here ♡')">
-
-    </div>
-
-   </div>
-
-  </div>
-
- </div>
-
- <div class="letter-section">
-
-  <div class="container">
-
-   <div class="section-head">
-
-    <div class="eyebrow">A letter to you</div>
-
-    <h2>My Isabella,</h2>
-
-    <div class="divider">♡</div>
-
-    <p>Some feelings deserve their own space. This is mine — for you.</p>
-
-   </div>
-
-   <div class="letter-paper">
-
-    <h3>My Isabella,</h3>
-
-    <p>[Write your personal letter here. Tell Isabella what you want her to know, in your own words.]</p>
-
-    <p>[Share a favorite memory, a little inside joke, or something meaningful about your relationship.]</p>
-
-    <div class="script">With love, Tre ♡</div>
-
-   </div>
-
-  </div>
-
- </div>
-
-</section>
-
-<!-- PHOTOS -->
-
-<section class="view" id="photos">
-
- <div class="page-intro container">
-
-  <div class="eyebrow">Different moments. Same us.</div>
-
-  <h1>Our <span class="script">Memories ♡</span></h1>
-
-  <p>The little things that mean everything.</p>
-
-  <div class="divider">♡</div>
-
- </div>
-
- <div class="container">
-
-  <div class="gallery" id="gallery"></div>
-
-  <div style="text-align:center;padding-bottom:65px">
-
-   <a class="btn" href="#home">← Back Home</a>
-
-  </div>
-
- </div>
-
-</section>
-
-<!-- VIDEOS -->
-
-<section class="view" id="videos">
-
- <div class="page-intro container">
-
-  <div class="eyebrow">Moving pictures, lasting feelings</div>
-
-  <h1>Our <span class="script">Videos ♡</span></h1>
-
-  <p>Little pieces of our story, in motion.</p>
-
- </div>
-
- <div class="container">
-
-  <div class="video-grid" id="videoGallery"></div>
-
-  <div style="text-align:center;padding-bottom:65px">
-
-   <a class="btn" href="#home">← Back Home</a>
-
-  </div>
-
- </div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section class="view" id="contact">
-
- <div class="page-intro container">
-
-  <div class="eyebrow">Just between us</div>
-
-  <h1>Contact <span class="script">Tre ♡</span></h1>
-
-  <p>A little place to leave me a note.</p>
-
- </div>
-
- <div class="container">
-
-  <div class="contact-box">
-
-   <div class="eyebrow">A note for Tre</div>
-
-   <h2>Say what's on <span class="script">your heart.</span></h2>
-
-   <p>Write anything you'd like. Copy your message and send it to me however you normally do. ♡</p>
-
-   <textarea id="note" placeholder="Your message to Tre..."></textarea>
-
-   <button class="btn solid" id="copyNote">Copy My Note ♡</button>
-
-   <p class="small-note" id="noteStatus" role="status">This won't send a message automatically.</p>
-
-   <p class="script" style="font-size:40px;margin-top:35px">Always, Tre ♡</p>
-
-   <a class="btn" href="#home">← Back Home</a>
-
-  </div>
-
- </div>
-
-</section>
+  <p id="progress" class="pink">
+    🔒 01　🔒 02　🔒 03
+  </p>
+
+  <section
+    class="card"
+    id="game"
+    aria-live="polite">
+  </section>
+
+  <footer>
+    Made by Tre, with love and a questionable amount
+    of free time. ♡
+  </footer>
 
 </main>
 
-<footer>Izzy & Tre ♡ &nbsp; — &nbsp; Our little corner of the world.</footer>
-
-<!-- LARGE PHOTO VIEWER -->
-
-<figure id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo">
-
- <button type="button" aria-label="Close photo" id="closeLightbox">×</button>
-
- <img id="largePhoto" alt="Enlarged memory">
-
- <figcaption id="photoCaption"></figcaption>
-
-</figure>
-
 <script>
+(function(){
 
-// ADD YOUR PHOTOS HERE.
+const area=document.getElementById('game');
+const progress=document.getElementById('progress');
 
-// Keep all your image files beside index.html.
+let step=-1;
+let tries=0;
 
-// Add or remove entries to change the number of photos.
-
-const photos = [
-
- ["photo-01.jpg","Memory 01"],
-
- ["photo-02.jpg","Memory 02"],
-
- ["photo-03.jpg","Memory 03"],
-
- ["photo-04.jpg","Memory 04"],
-
- ["photo-05.jpg","Memory 05"],
-
- ["photo-06.jpg","Memory 06"],
-
- ["photo-07.jpg","Memory 07"],
-
- ["photo-08.jpg","Memory 08"],
-
- ["photo-09.jpg","Memory 09"]
-
+const puzzles=[
+  {
+    label:'LOCK 1 — BIG BRAIN ACTIVITIES 🧠',
+    title:'Decode This, My Love',
+    intro:"Alright, my love. Starting off with a little brain exercise. Decode this message and let's see what you got. 😂",
+    puzzle:'PDUV',
+    hint:"💡 Hint: Take each letter three steps backward in the alphabet. You're welcome. 😂",
+    answer:'MARS',
+    success:'Okayyyy, Sherlock! 🕵️‍♀️😂 Look at you cracking codes and stuff. One lock down, two to go!'
+  },
+  {
+    label:'LOCK 2 — CALCULATOR GIRLIE 🧮',
+    title:'Time for Some Math',
+    intro:"Okay, mathematician. Let's see what you got. And yes, you can use a calculator. I won't tell anybody. 😭",
+    puzzle:'(85 × 9) + 12 = ?',
+    hint:'Calculator privileges: officially granted. 🧮',
+    answer:'777',
+    success:'Look at you being all smart and stuff. 😂'
+  },
+  {
+    label:'LOCK 3 — YOU BETTER KNOW THIS ONE 🥒',
+    title:'The Final Lock',
+    intro:"Okay, my love. This one should be easy. What's OUR secret word? You know exactly what I'm talking about. 👀",
+    puzzle:'♡ ? ♡',
+    hint:'No math, no cipher. Just our little secret.',
+    answer:'PICKLE',
+    success:'You remembered. Of course you did. Now we’re talking. 😂♡'
+  }
 ];
 
-// ADD YOUR VIDEOS HERE.
+function render(){
 
-// Leave a filename empty until you're ready to upload a video.
+  progress.textContent=step===3
+    ?'♥ ALL THREE LOCKS UNLOCKED ♥'
+    :[0,1,2].map(i=>
+      i<step?'♥':i===step?'🔓':'🔒'
+    ).join('　');
 
-const videos = [
+  if(step===-1){
 
- ["","Our first video"],
+    area.innerHTML=`
+      <div style="font-size:45px">💌</div>
 
- ["","Another favorite memory"]
+      <h2>Hey, My Love! ♡</h2>
 
-];
+      <p class="muted">
+        Soooo... I made you something. But obviously
+        I couldn’t just give it to you. Where’s the fun
+        in that? 😂
+      </p>
 
-const sections = ["home","photos","videos","contact"];
+      <p class="muted">
+        You’ve got three locks to get through before
+        you can see your surprise.
+      </p>
 
-const nav = document.getElementById("nav");
+      <p class="pink">
+        No pressure or anything. I’m only judging
+        a little. 🤭
+      </p>
 
-const menuBtn = document.getElementById("menuBtn");
+      <button id="next">
+        Let’s Do This! 🔐
+      </button>
+    `;
 
-function showPage(){
+    document.getElementById('next').onclick=()=>{
+      step=0;
+      render();
+    };
 
- const name = location.hash.replace("#","") || "home";
+    return;
+  }
 
- const page = sections.includes(name) ? name : "home";
+  if(step===3){
 
- sections.forEach(id=>{
+    area.innerHTML=`
+      <div class="heart" aria-hidden="true">♥</div>
 
-   document.getElementById(id).classList.toggle("active",id===page);
+      <div class="small">
+        100% CERTIFIED SMART GIRLFRIEND
+      </div>
 
- });
+      <h2>Okayyyy, You Did It!! 😂💕</h2>
 
- document.querySelectorAll("nav a").forEach(a=>{
+      <p>
+        Look at you being all smart and stuff.
+      </p>
 
-   a.classList.toggle("active",a.getAttribute("href")==="#"+page);
+      <p class="muted">
+        Three locks, zero problems.
+        Well... hopefully. 😂
+      </p>
 
- });
+      <p class="muted">
+        Anywayyyy, I made you a little something.
+        Because apparently I have hobbies now,
+        and one of them is making random surprises
+        for my love. 🖤
+      </p>
 
- nav.classList.remove("open");
+      <p class="pink">
+        Go ahead, you’ve earned it. ♡
+      </p>
 
- menuBtn.setAttribute("aria-expanded","false");
+      <a
+        class="btn"
+        href="https://treway69.github.io/izzy-and-tre/">
+        Show Me My Surprise! 💕
+      </a>
 
- document.getElementById("lightbox").classList.remove("open");
+      <button id="replay">
+        Play Again ♡
+      </button>
+    `;
 
- document.body.style.overflow="";
+    document.getElementById('replay').onclick=()=>{
+      step=-1;
+      render();
+    };
 
- window.scrollTo(0,0);
+    return;
+  }
+
+  const q=puzzles[step];
+
+  area.innerHTML=`
+    <div class="small">
+      ${q.label}
+    </div>
+
+    <h2>
+      ${q.title}
+    </h2>
+
+    <p class="muted">
+      ${q.intro}
+    </p>
+
+    <div class="puzzle">
+      ${q.puzzle}
+    </div>
+
+    <p class="hint">
+      ${q.hint}
+    </p>
+
+    <form id="form">
+      <input
+        id="guess"
+        placeholder="Your answer..."
+        aria-label="Answer"
+        autocomplete="off"
+        required
+      >
+
+      <div
+        class="error"
+        id="feedback"
+        role="status">
+      </div>
+
+      <button type="submit">
+        Unlock ♡
+      </button>
+    </form>
+  `;
+
+  document.getElementById('form').onsubmit=e=>{
+
+    e.preventDefault();
+
+    const guess=document.getElementById('guess')
+      .value.trim().toUpperCase();
+
+    if(guess!==q.answer){
+
+      tries++;
+
+      document.getElementById('feedback').textContent=
+        tries>=3
+          ?'Not quite! Check that hint again, my love. 😂'
+          :'Oop, not quite! Try again 😂';
+
+      return;
+    }
+
+    tries=0;
+
+    area.innerHTML=`
+      <div class="pink" style="font-size:54px">
+        ♥
+      </div>
+
+      <h2>Lock Unlocked! 🔓</h2>
+
+      <p class="muted">
+        ${q.success}
+      </p>
+
+      <button id="next">
+        ${step===2
+          ?'Reveal My Surprise! ♡'
+          :'Next Challenge →'}
+      </button>
+    `;
+
+    document.getElementById('next').onclick=()=>{
+      step++;
+      render();
+    };
+
+  };
 
 }
 
-window.addEventListener("hashchange",showPage);
+render();
 
-menuBtn.addEventListener("click",()=>{
-
- const open=nav.classList.toggle("open");
-
- menuBtn.setAttribute("aria-expanded",String(open));
-
-});
-
-showPage();
-
-// Build a compact gallery with 3 images across on most phones.
-
-const gallery = document.getElementById("gallery");
-
-const lightbox = document.getElementById("lightbox");
-
-const largePhoto = document.getElementById("largePhoto");
-
-const caption = document.getElementById("photoCaption");
-
-photos.forEach(([src,name],index)=>{
-
- const card=document.createElement("button");
-
- card.type="button";
-
- card.className="photo-item";
-
- card.setAttribute("aria-label","Open "+name);
-
- const placeholder=document.createElement("div");
-
- placeholder.className="photo-placeholder";
-
- placeholder.innerHTML='<span class="heart">♡</span><small>MEMORY '+String(index+1).padStart(2,"0")+'</small>';
-
- const img=document.createElement("img");
-
- img.src=src;
-
- img.alt=name;
-
- img.loading="lazy";
-
- img.style.display="none";
-
- let loaded=false;
-
- img.addEventListener("load",()=>{
-
-   loaded=true;
-
-   img.style.display="block";
-
-   placeholder.style.display="none";
-
- });
-
- img.addEventListener("error",()=>{loaded=false});
-
- const zoom=document.createElement("span");
-
- zoom.className="zoom";
-
- zoom.textContent="↗";
-
- card.append(placeholder,img,zoom);
-
- card.addEventListener("click",()=>{
-
-   if(!loaded) return;
-
-   largePhoto.src=src;
-
-   largePhoto.alt=name;
-
-   caption.textContent=name;
-
-   lightbox.classList.add("open");
-
-   document.body.style.overflow="hidden";
-
-   document.getElementById("closeLightbox").focus();
-
- });
-
- gallery.appendChild(card);
-
-});
-
-function closeViewer(){
-
- lightbox.classList.remove("open");
-
- document.body.style.overflow="";
-
-}
-
-document.getElementById("closeLightbox").addEventListener("click",closeViewer);
-
-lightbox.addEventListener("click",e=>{
-
- if(e.target===lightbox)closeViewer();
-
-});
-
-document.addEventListener("keydown",e=>{
-
- if(e.key==="Escape")closeViewer();
-
-});
-
-// Build video gallery.
-
-const videoGallery=document.getElementById("videoGallery");
-
-videos.forEach(([src,title])=>{
-
- const card=document.createElement("article");
-
- card.className="video-card";
-
- if(src){
-
-   const video=document.createElement("video");
-
-   video.controls=true;
-
-   video.preload="metadata";
-
-   video.src=src;
-
-   video.playsInline=true;
-
-   card.appendChild(video);
-
- }else{
-
-   const empty=document.createElement("div");
-
-   empty.className="video-empty";
-
-   empty.innerHTML='<span class="play">▷</span><span>Our video memory ♡</span>';
-
-   card.appendChild(empty);
-
- }
-
- const heading=document.createElement("h3");
-
- heading.textContent=title;
-
- card.appendChild(heading);
-
- videoGallery.appendChild(card);
-
-});
-
-// Contact page: copy note; do not pretend to send it.
-
-document.getElementById("copyNote").addEventListener("click",async()=>{
-
- const note=document.getElementById("note").value.trim();
-
- const status=document.getElementById("noteStatus");
-
- if(!note){
-
-   status.textContent="Write a message first ♡";
-
-   return;
-
- }
-
- try{
-
-   await navigator.clipboard.writeText(note);
-
-   status.textContent="Copied! You can paste this into a message to Tre.";
-
- }catch(e){
-
-   document.getElementById("note").select();
-
-   status.textContent="Select Copy on your phone to copy this note.";
-
- }
-
-});
-
+})();
 </script>
 
 </body>
-
 </html>
